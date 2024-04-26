@@ -1,0 +1,160 @@
+Homework#3 Team:
+Tri Vikram Dharmavarapu (TD23Z)
+Rahul Debnath (RD23BC)
+
+This project './server' develops a network-based tic-tac-toe game server enabling users to engage in tic-tac-toe games online.
+It accommodates several clients simultaneously and includes functionalities such as user register and sign-in, the ability to observe games in progress,
+user-to-user messaging, and fundamental player stats. This guide outlines steps for compiling and launching the server and provides details on known issues 
+and how to demonstrate the server's capabilities.
+
+EXECUTION:
+----------
+
+Prerequisites:
+
+- Download .tar file.
+- Make sure the remote servers must be accessible through SSH.
+
+Steps:
+
+- Unzip .tar file.
+    $ tar -xf <FileName>.tar
+- Run 'make' to get executable files.
+    $ make
+- Execute ./server as explained below.
+- To clean the files use the command 'make clean' [removes all executable files (a.out), object files (*.o), backup files (*~), core dump files (core.*) ]
+    $ make clean
+
+USAGE:
+
+- './server' in the following format:
+
+Commands supported:
+
+  who                     
+  stats [name]            
+  game                    
+  observe <game_num>      
+  unobserve               
+  match <name> <b|w> [t]  
+  <A|B|C><1|2|3>          
+  resign                  
+  refresh                 
+  shout <msg>             
+  tell <name> <msg>       
+  kibitz <msg>            
+  ' <msg>                 
+  quiet                   
+  nonquiet              
+  block <id>             
+  unblock <id>            
+  listmail                
+  readmail <msg_num>      
+  deletemail <msg_num>    
+  mail <id> <title>      
+  info <msg>              
+  passwd <new>            
+  exit                   
+  quit                   
+  help                   
+  ?                      
+
+FEATURES:
+
+1.  who  - Lists all online players
+ 
+2.  stats [name] - Displays user status information of the [name] player. If you give the name of the player ouput 
+    will be stats of only that player.And if you doesn't give any name then the ouput will be stats of all the users.
+    
+    Usage: 
+        stats <user_id> or stats
+
+3.  game - Displays the total nunmber of games are curently being played. The output gameid's will be zero indexed.
+
+4.  observe [Game ID] - lets the user to observe the game of other users who are playing an on going games. 
+
+5. unobserve - lets the user to disable observing a on-going match.
+
+6. match <name> <b|w> [t] - sends the other specified player(<name>) a game invite.
+    - Sample Format:
+        match <name> <b|w> [t]
+    - Example:
+        match <name> b 200
+
+7. <A|B|C><1|2|3> - This is the actual game moves for both of the players. This works only when player is currently player game, If
+    player isn't playing any game it gives "Invalid Option..!".
+
+   - Example:
+        [A1] marks the (A, 1) cell for a player
+
+8.  resign -  when a player uses 'resign' command gets resigned from the current playing game, and sends notification to players
+    and observers of the game.
+
+9.  refresh  - This coomand refresh the current games status (displays the curently oberving or playing game). This can only valid
+    for player who are currently playing or observing.
+
+10. shout <message>  - This command is used to broadcast a message. When user uses this command all the online users get displayed 
+    with message as 'shouted <msg>' to all other online users in server. 
+
+11. tell <name> <message> - one user can send a <msg> to the specified player (<name>).
+
+    - Example:
+       tell abc Hello, welcome.
+       player abc receives a message from the sender 'Hello, welcome.'
+       If the player abc has blocked the sender then the msg is not recceived.
+
+12.  kibitz <message> - This allows the only observing users to see the entered <msg>.
+      If the other observing users have blocked the sender (observing user) then this kibitz msg is not displayed by these observing users.
+
+13.  ' <message> - This command same as the kibitz feature.
+
+14. quiet - \The user who enables this, receives no broadcasting msgs from other users.
+
+15. nonquiet - This disables the 'quiet' feature.
+
+16. block <id> - when this is used by user then the blocked id user cannot send any msgs to this user.
+
+17. unblock <id> - simply disables the blocked user to allow communication.
+
+18. listmail - Displays the inbox mails with subject and timestamp.
+
+19. readmail <msg_num> - Displays the body of the mail with <msg_num>
+
+20. deletemail <msg_num> - deletes the specified mail.
+
+21. mail <id> <title> - To send a user(<id>) a mail.
+
+22. info <msg> - To update an info of a user.
+
+23. passwd <new> - This command allows a user to change his account password.
+
+24. exit (Exit the server) - User can exit the server using exit command.
+
+25. quit (Exit the server) - the user can quit the server using quit command.
+
+26. help - It displays all commands that are available  if a user is new to this game, it can use this feature to 
+    understand the functionalites.
+
+27. ? - similar to 'help' command list and their functionalities
+
+
+
+
+ADDITIONAL FEATURES:
+
+-   when block is used by one user to block another user, the blocked used cannot send any messages to the bloker user but the blocker
+    user can still send its messages to the blocked user.
+-   when using mail please make sure to add '.' before a new line to comeout of your mail body.
+-   Whenever a user is logged in, it gets a message of the unread mails that are received.
+-   When game is iniated with out all parameters, it takes default value for choice - 'w' and game time to 600 seconds.
+-   If a user exceeds the game time will loose the game.
+-   When user register account as guest, if registartion is successful them immidately server logs in user with that acount.
+
+
+Note:
+
+- If there are any extra/unexpected options and arguments program will throw an invalid error.
+- while running ./server if the port 55551 does not work, please try adding a different port 
+  Example:
+      ./server 55552
+ 

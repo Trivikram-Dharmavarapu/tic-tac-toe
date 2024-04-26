@@ -1,0 +1,29 @@
+[...] optional field, <......> required field
+who                    # List all online users
+stats [name]           # Display user information
+game                   # list all current games
+observe <game_num>     # Observe a game
+unobserve              # Unobserve a game
+match <name> <b|w> [t] # Try to start a game
+<A|B|C><1|2|3>         # Make a move in a game
+resign                 # Resign a game
+refresh                # Refresh a game
+shout <msg>            # shout <msg> to every one online
+tell <name> <msg>      # tell user <name> message
+kibitz <msg>           # Comment on a game when observing
+' <msg>                # Comment on a game
+quiet                  # Quiet mode, no broadcast messages
+nonquiet               # Non-quiet mode
+block <id>             # No more communication from <id>
+unblock <id>           # Allow communication from <id>
+listmail               # List the header of the mails
+readmail <msg_num>     # Read the particular mail
+deletemail <msg_num>   # Delete the particular mail
+mail <id> <title>      # Send id a mail
+info <msg>             # change your information to <msg>
+passwd <new>           # change password
+exit                   # quit the system
+quit                   # quit the system
+help                   # print this message
+?                      # print this message
+register <name> <pwd>  # register a new user

@@ -1,7 +1,3 @@
-Homework#3 Team:
-Tri Vikram Dharmavarapu (TD23Z)
-Rahul Debnath (RD23BC)
-
 This project './server' develops a network-based tic-tac-toe game server enabling users to engage in tic-tac-toe games online.
 It accommodates several clients simultaneously and includes functionalities such as user register and sign-in, the ability to observe games in progress,
 user-to-user messaging, and fundamental player stats. This guide outlines steps for compiling and launching the server and provides details on known issues 
